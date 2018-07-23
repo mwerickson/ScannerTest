@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:ScannerTest.Converters;assembly=ScannerTest"
+             x:Class="ScannerTest.Pages.DeviceListPage"
+             Title="Devices">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="cnvInverse" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Refresh" Command="{Binding RefreshCommand}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Orientation="Vertical">
+
+        <Label Text="No paired devices available" 
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand" 
+               IsVisible="{Binding HasDevices, Converter={StaticResource cnvInverse}}" />
+
+      <ActivityIndicator
+          IsVisible="{Binding IsBusy}"
+          IsRunning="{Binding IsBusy}"
+          Color="Black" />
+
+        <ListView HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  ItemsSource="{Binding Devices}"
+                  IsVisible="{Binding HasDevices}"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell StyleId="none">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

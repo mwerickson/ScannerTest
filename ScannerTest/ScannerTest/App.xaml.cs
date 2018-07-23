@@ -1,4 +1,7 @@
 ﻿using System;
+using FreshMvvm;
+using ScannerTest.PageModels;
+using ScannerTest.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +14,9 @@ namespace ScannerTest
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            var page = FreshPageModelResolver.ResolvePageModel<DeviceListPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page);
+            MainPage = basicNavContainer;
         }
 
         protected override void OnStart()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Plugin.BluetoothLE;
 using UIKit;
 
 namespace ScannerTest.iOS
@@ -23,6 +24,7 @@ namespace ScannerTest.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            //CrossBleAdapter.Init(BleAdapterConfiguration.DefaultBackgroudingConfig);
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

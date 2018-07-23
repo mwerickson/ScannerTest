@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace ScannerTest
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace ScannerTest.Pages
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DeviceListPage : ContentPage
     {
-        public MainPage()
+        public DeviceListPage()
         {
             InitializeComponent();
         }
